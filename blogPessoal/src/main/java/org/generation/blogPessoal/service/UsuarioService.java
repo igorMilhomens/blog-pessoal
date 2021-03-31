@@ -17,6 +17,16 @@ public class UsuarioService {
 	@Autowired
 	private UsuarioRepository repository;
 	
+	
+	public Usuario AtualizarUsuario(Usuario usuario) {
+		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+
+		String senhaEncoder = encoder.encode(usuario.getSenha());
+		usuario.setSenha(senhaEncoder);
+
+		return repository.save(usuario);
+	}
+	
 	//VALIDAÇÃO PARA NÃO PERMITIR CRIAÇÃO DE USUARIO EXISTENTE
 	
 	//public Usuario CadastrarUsuario(Usuario usuario) {
