@@ -47,7 +47,7 @@ public class UsuarioController {
 		return repository.findById(id).map( resp -> ResponseEntity.ok(resp)).orElse(ResponseEntity.notFound().build());
 	}
 	
-	@PostMapping("/atualizar")
+	@PutMapping("/atualizar")
 	public ResponseEntity<Usuario> PostAtualizar(@RequestBody Usuario usuario) {
 		return ResponseEntity.status(HttpStatus.CREATED)
 				.body(usuarioService.AtualizarUsuario(usuario));
